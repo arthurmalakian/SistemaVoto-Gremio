@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PlatesController;
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\VotingPeriodController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('/students',StudentsController::class);
 Route::apiResource('/plates',PlatesController::class);
+
+Route::get('/voting-period',[VotingPeriodController::class,'index']);
+Route::get('/voting-period/{id}',[VotingPeriodController::class,'show']);
+Route::get('/voting-period-last',[VotingPeriodController::class,'last']);
+Route::post('/voting-period-open',[VotingPeriodController::class,'open']);
+Route::post('/voting-period-close',[VotingPeriodController::class,'close']);
+
