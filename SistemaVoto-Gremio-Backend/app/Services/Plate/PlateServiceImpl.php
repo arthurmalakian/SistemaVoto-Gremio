@@ -12,7 +12,7 @@ class PlateServiceImpl implements PlateService
     {
         try{
             $plates = Plate::with('president')->with('vicePresident')->orderBy('name','asc')->get();
-            return response(new PlateResource($plates),200);
+            return response(PlateResource::collection($plates),200);
         }catch(\Exception $exception){
             return response([
                 'error' => $exception->getMessage(),

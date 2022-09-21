@@ -12,7 +12,7 @@ class StudentServiceImpl implements StudentService
     {
         try{
             $students = Student::with('media')->orderBy('name','asc')->get();
-            return response(new StudentResource($students),200);
+            return response(StudentResource::collection($students),200);
         }catch(\Exception $exception){
             return response([
                 'error' => $exception->getMessage(),
@@ -45,7 +45,9 @@ class StudentServiceImpl implements StudentService
                 $student->addMediaFromRequest('image')->toMediaCollection('student_image');
             }
             DB::commit();
-            return response(new StudentResource($student),201);
+            return response([
+                'message' => 'Estudante criado com sucesso.'
+            ],201);
         }catch(\Exception $exception) {
             DB::rollBack();
             return response([
@@ -71,8 +73,10 @@ class StudentServiceImpl implements StudentService
                 }
             }
             DB::commit();
-            return response(new StudentResource($student),200);
-        }catch(\Exception $exception) {
+            return response([
+                'message' => 'Estudante editado com sucesso.'
+            ],200);
+            } catch(\Exception $exception) {
             DB::rollBack();
             return response([
                 'error' => $exception->getMessage(),
@@ -86,7 +90,9 @@ class StudentServiceImpl implements StudentService
         try{
             $student = Student::with('media')->findOrFail($student_id);
             $student->delete();
-            return response(new StudentResource($student),200);
+            return response([
+                'message' => 'Estudante excluído.'
+            ],200);
         }catch(\Exception $exception){
             return response([
                 'error' => $exception->getMessage(),

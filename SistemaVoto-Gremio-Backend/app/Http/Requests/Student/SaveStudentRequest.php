@@ -25,8 +25,8 @@ class SaveStudentRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'president_id' => 'required',
-            'vice_president_id' => 'required',
+            'cpf' => 'required|string',
+            'image' => 'required',
         ];
     }
 
@@ -38,9 +38,9 @@ class SaveStudentRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Informe o nome da chapa.',
-            'president_id.required' => 'Informe o presidente da chapa',
-            'vice_president_id.required' => 'Informe o vice-presidente da chapa.',
+            'name.required' => 'Informe o nome do estudante.',
+            'cpf.required' => 'Informe o cpf do estudante',
+            'image.required' => 'Estudante precisa de foto.',
         ];
     }
 }

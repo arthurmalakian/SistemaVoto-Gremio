@@ -14,6 +14,9 @@ class VotingPeriodResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'plates' => VoteResultResource::collection($this->resultsVotes)
+        ];
     }
 }

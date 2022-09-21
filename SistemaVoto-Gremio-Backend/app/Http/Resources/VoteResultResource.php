@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PlateResource extends JsonResource
+class VoteResultResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,8 @@ class PlateResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'president' => new StudentResource($this->president),
-            'vice_president' => new StudentResource($this->vicePresident),
+            'plate_name' => $this->name,
+            'votes' => $this->votes->count()
         ];
     }
 }

@@ -14,6 +14,11 @@ class StudentResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'cpf' => $this->cpf,
+            'image' => $this->getMedia('student_image')[0]->getUrl()
+        ];
     }
 }

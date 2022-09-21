@@ -11,7 +11,7 @@ class VotingPeriodServiceImpl implements VotingPeriodService
     {
         try{
             $periods = VotingPeriod::withTrashed()->orderBy('created_at','desc')->get();
-            return response(new VotingPeriodResource($periods),200);
+            return response(VotingPeriodResource::collection($periods),200);
         }catch(\Exception $exception){
             return response([
                 'error' => $exception->getMessage(),

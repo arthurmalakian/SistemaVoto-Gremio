@@ -28,4 +28,12 @@ class Plate extends Model
     public function vicePresident(){
         return $this->hasOne(Student::class,'id','vice_president_id');
     }
+
+    public function votes(){
+        $votingPeriod = VotingPeriod::first();
+        // if($votingPeriod->deleted_at == null){
+        //     return 'Não computados';
+        // }
+        return $this->hasMany(Vote::class,'plate_id','id');
+    }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Student;
+namespace App\Http\Requests\Vote;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateStudentRequest extends FormRequest
+class VoteRequest extends FormRequest
 {
-       /**
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -15,7 +15,6 @@ class UpdateStudentRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,8 +23,8 @@ class UpdateStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'cpf' => 'required|string',
+            'cpf' => 'required|string|unique:votes',
+            'plate_id' => 'required',
         ];
     }
 
@@ -37,8 +36,9 @@ class UpdateStudentRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Informe o nome do estudante.',
-            'cpf.required' => 'Informe o cpf do estudante',
+            'cpf.required' => 'Informe o seu cpf.',
+            'cpf.unique' => 'Apenas um voto por cpf.',
+            'plate_id.required' => 'Selecione a chapa'
         ];
     }
 }
