@@ -12,7 +12,7 @@
       "
     >
       <div class="card mb-3" style="max-width: 540px">
-        <div class="row g-0">
+        <div class="row g-0 align-items-center justify-content-center">
           <div class="col-md-4">
             <img
               :src="
@@ -112,7 +112,7 @@ export default {
           alert(response.data.message);
           return response.data.message;
         } catch (error) {
-          alert("É permitido apenas um voto por CPF.");
+          alert(error.response.data.message);
         }
       }
     }
