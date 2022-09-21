@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\PlatesController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\VoteController;
@@ -20,8 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource('/plates',PlatesController::class)->only('index','show');
 Route::post('/vote',[VoteController::class,'vote']);
 Route::get('/voting-period-last',[VotingPeriodController::class,'last']);
-
+Route::post('/login',[AuthenticationController::class,'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/logout', [AuthenticationController::class,'logout']);
     Route::apiResource('/plates',PlatesController::class)->except('index','show');
     Route::apiResource('/students',StudentsController::class);
     Route::get('/voting-period',[VotingPeriodController::class,'index']);
