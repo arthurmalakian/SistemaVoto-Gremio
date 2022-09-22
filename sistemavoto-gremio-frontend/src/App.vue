@@ -1,7 +1,8 @@
 <template>
   <div class="app">
     <app-nav-bar></app-nav-bar>
-    <vote-screen></vote-screen>
+    <!-- <vote-screen></vote-screen> -->
+    <login-screen></login-screen>
     <!-- <router-view>
       
     </router-view> -->
@@ -9,22 +10,24 @@
 </template>
 
 <script>
-import AppNavBar from './components/Navbar.vue'
-import VoteScreen from './views/VoteScreen.vue'
+import AppNavBar from "./components/Navbar.vue";
+// import VoteScreen from './views/VoteScreen.vue'
+import LoginScreen from "./views/LoginScreen.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     AppNavBar,
-    VoteScreen
-  }
-}
+    LoginScreen,
+    // VoteScreen
+  },
+};
 </script>
 
 <style>
-  * {
+* {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  }
+}
 </style>
